@@ -118,6 +118,29 @@ Classes:
   # Whether attributes are enabled
   attributes-enabled: true
   #
+  # Whether attributes source
+  #  - AttributePlus
+  #  - Fabled
+  attributes-source: 'AttributePlus'
+  #
+  # AttributePlus attributes
+  attributes:
+    block-break-speed:
+      - "破坏速度"
+      - "加速破坏"
+    jump-strength:
+      - "跳跃高度"
+      - "加强跳跃"
+  skill-attributes:
+    value:        # 影响damage-value等
+      - "力量"
+      - "智力"
+    range:   # 影响cone-range, linear-range等
+      - "敏捷"
+      - "感知"
+    duration:     # 影响fire-duration等
+      - "智慧"
+  #
   # Whether attributes can be refunded
   attributes-downgrade: false
   #

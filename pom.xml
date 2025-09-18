@@ -29,6 +29,10 @@
 
     <repositories>
         <repository>
+            <id>maven-public</id>
+            <url>https://nexus.maplex.top/repository/maven-public</url>
+        </repository>
+        <repository>
             <id>magemonkey-releases</id>
             <url>https://repo.travja.dev/releases</url>
         </repository>
@@ -143,6 +147,11 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.serverct.ersha</groupId>
+            <artifactId>attributeplus-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -165,6 +174,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.projectlombok</groupId>

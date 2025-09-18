@@ -79,6 +79,7 @@ import studio.magemonkey.fabled.task.GUITask;
 import studio.magemonkey.fabled.task.ManaTask;
 import studio.magemonkey.fabled.task.SaveTask;
 import studio.magemonkey.fabled.thread.MainThread;
+import top.maplex.fabled.attribute.AttributePlusManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -620,8 +621,13 @@ public class Fabled extends SkillAPI {
         PlayerStats.init();
         ClassBoardManager.registerText();
         if (settings.isAttributesEnabled()) {
-            attributeManager = new AttributeManager();
-            ((AttributeManager) attributeManager).load(this);
+            if (settings.getAttributeSource().equals("AttributePlus")) {
+                attributeManager = new AttributePlusManager();
+                ((AttributePlusManager) attributeManager).load();
+            } else {
+                attributeManager = new AttributeManager();
+                ((AttributeManager) attributeManager).load(this);
+            }
         }
 
         // Load classes and skills

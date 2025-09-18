@@ -43,8 +43,11 @@ public class FabledAttribute implements IconHolder {
      */
     // Attribute description
     @Getter
+    @Setter
     private String    key;
+    @Setter
     private String    display;
+    @Setter
     private ItemStack icon;
     /**
      * -- GETTER --
@@ -63,6 +66,7 @@ public class FabledAttribute implements IconHolder {
      * @return costBase amount
      */
     @Getter
+    @Setter
     private int       costBase;
     /**
      * Retrieves the raw additional cost of the attribute upgrade.
@@ -75,10 +79,23 @@ public class FabledAttribute implements IconHolder {
     private double    costModifier;
 
     // Dynamic global modifiers
+    @Getter
+    @Setter
     private Map<ComponentType, Map<String, AttributeValue[]>> dynamicModifiers = new EnumMap<>(ComponentType.class);
 
     // General stat modifiers
+    @Getter
+    @Setter
     private Map<String, Formula> statModifiers = new HashMap<>();
+
+    /**
+     * Creates a new empty attribute.
+     * All properties must be set manually using setter methods.
+     */
+    public FabledAttribute() {
+        this.dynamicModifiers = new EnumMap<>(ComponentType.class);
+        this.statModifiers = new HashMap<>();
+    }
 
     /**
      * Creates a new attribute, loading the settings from the given
@@ -88,6 +105,7 @@ public class FabledAttribute implements IconHolder {
      * @param key  the key the attribute was labeled under
      */
     public FabledAttribute(DataSection data, String key) {
+        this();
         this.key = key.toLowerCase();
         this.display = data.getString(DISPLAY, key);
         this.icon = Data.parseIcon(data);
@@ -115,12 +133,30 @@ public class FabledAttribute implements IconHolder {
     }
 
     /**
+     * Retrieves the display name for the attribute
+     *
+     * @return display name of the attribute
+     */
+    public String getDisplay() {
+        return display;
+    }
+
+    /**
      * Retrieves the name for the attribute
      *
      * @return name of the attribute
      */
     public String getName() {
         return display;
+    }
+
+    /**
+     * Retrieves the icon for the attribute
+     *
+     * @return icon of the attribute
+     */
+    public ItemStack getIcon() {
+        return icon;
     }
 
     /**

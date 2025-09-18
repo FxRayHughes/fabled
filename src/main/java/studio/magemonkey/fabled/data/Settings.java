@@ -109,6 +109,7 @@ public class Settings extends com.sucy.skill.data.Settings {
             CLASS_HP           = CLASS_BASE + "classless-hp",
             CLASS_SHOW         = CLASS_BASE + "show-auto-skills",
             CLASS_ATTRIB       = CLASS_BASE + "attributes-enabled",
+            CLASS_ATTRIB_SOURCE = CLASS_BASE + "attributes-source",
             CLASS_REFUND       = CLASS_BASE + "attributes-downgrade",
             CLASS_REFUND_PRICE = CLASS_BASE + "attributes-downgrade-price",
             CLASS_LEVEL        = CLASS_BASE + "level-up-skill",
@@ -225,7 +226,7 @@ public class Settings extends com.sucy.skill.data.Settings {
      * @return true if enabled, false otherwise
      */
     @Getter
-    private boolean             onePerClass;
+    private boolean          onePerClass;
     /**
      * Retrieves the main class group for displaying prefixes
      * or showing account information
@@ -233,23 +234,23 @@ public class Settings extends com.sucy.skill.data.Settings {
      * @return main class group
      */
     @Getter
-    private String              mainGroup;
+    private String           mainGroup;
     @Getter
-    private boolean             sharedSkillPoints;
+    private boolean          sharedSkillPoints;
     /**
      * Retrieves the max accounts allowed for most players
      *
      * @return max accounts allowed for most players
      */
     @Getter
-    private int                 maxAccounts;
-    private boolean             monsterEnemy;
+    private int              maxAccounts;
+    private boolean          monsterEnemy;
     @Getter
     @Setter
-    private boolean             passiveAlly;
-    private boolean             playerAlly;
-    private boolean             affectNpcs;
-    private boolean             affectArmorStands;
+    private boolean          passiveAlly;
+    private boolean          playerAlly;
+    private boolean          affectNpcs;
+    private boolean          affectArmorStands;
     /**
      * -- SETTER --
      *  Swaps out the default combat protection for a custom one
@@ -257,8 +258,8 @@ public class Settings extends com.sucy.skill.data.Settings {
      * @param combatProtection combat protection to use
      */
     @Setter
-    private CombatProtection    combatProtection = new DefaultCombatProtection();
-    private boolean             auto;
+    private CombatProtection combatProtection = new DefaultCombatProtection();
+    private boolean          auto;
     /**
      * -- GETTER --
      *  Checks whether the plugin is using SQL Database saving
@@ -266,36 +267,36 @@ public class Settings extends com.sucy.skill.data.Settings {
      * @return true if enabled, false otherwise
      */
     @Getter
-    private boolean             useSql;
-    private int                 minutes;
+    private boolean          useSql;
+    private int              minutes;
     /**
      * -- GETTER --
      *
      * @return time in milliseconds to wait before loading SQL data
      */
     @Getter
-    private int                 sqlDelay;
+    private int              sqlDelay;
     /**
      * Retrieves the host IP for the database
      *
      * @return host IP for SQL database
      */
     @Getter
-    private String              sqlHost;
+    private String           sqlHost;
     /**
      * Retrieves the host port for the database
      *
      * @return host port for SQL database
      */
     @Getter
-    private String              sqlPort;
+    private String           sqlPort;
     /**
      * Retrieves the name of the SQL database
      *
      * @return SQL database name
      */
     @Getter
-    private String              sqlDatabase;
+    private String           sqlDatabase;
     /**
      * -- GETTER --
      *  Retrieves the username for the database credentials
@@ -303,7 +304,7 @@ public class Settings extends com.sucy.skill.data.Settings {
      * @return SQL database username
      */
     @Getter
-    private String              sqlUser;
+    private String           sqlUser;
     /**
      * -- GETTER --
      *  Retrieves the password for the database credentials
@@ -311,7 +312,7 @@ public class Settings extends com.sucy.skill.data.Settings {
      * @return SQL database password
      */
     @Getter
-    private String              sqlPass;
+    private String           sqlPass;
     /**
      * -- GETTER --
      *  Checks whether Fabled should modify the max health of players
@@ -319,7 +320,7 @@ public class Settings extends com.sucy.skill.data.Settings {
      * @return true if enabled, false otherwise
      */
     @Getter
-    private boolean             modifyHealth;
+    private boolean          modifyHealth;
     /**
      * -- GETTER --
      *  <p>Retrieves the default health for players that do not have a class.</p>
@@ -327,8 +328,8 @@ public class Settings extends com.sucy.skill.data.Settings {
      * @return default health for classless players
      */
     @Getter
-    private int                 defaultHealth;
-    private boolean             showAutoSkills;
+    private int              defaultHealth;
+    private boolean          showAutoSkills;
     /**
      * -- GETTER --
      *  Checks whether attributes are enabled
@@ -336,7 +337,10 @@ public class Settings extends com.sucy.skill.data.Settings {
      * @return true if enabled, false otherwise
      */
     @Getter
-    private boolean             attributesEnabled;
+    private boolean          attributesEnabled;
+
+    @Getter
+    private String              attributeSource;
     /**
      * Checks whether attribute points can be refunded
      *
@@ -1104,6 +1108,7 @@ public class Settings extends com.sucy.skill.data.Settings {
         defaultHealth = config.getInt(CLASS_HP);
         showAutoSkills = config.getBoolean(CLASS_SHOW);
         attributesEnabled = config.getBoolean(CLASS_ATTRIB);
+        attributeSource = config.getString(CLASS_ATTRIB_SOURCE);
         attributesDowngrade = config.getBoolean(CLASS_REFUND);
         attributesDowngradePrice = config.getInt(CLASS_REFUND_PRICE);
         levelUpSkill = config.getString(CLASS_LEVEL);
